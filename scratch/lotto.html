@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="title" content="Arina Lotto Scratch">
+    <meta name="description" content="The World’s first DAPP to bet on the price of Cryptocurrencies">
+    <meta name="author" content="">
+    <meta property="og:title" content="太開心了！我在ARINA地產大亨！" />
+    <meta property="og:description" content="找到超棒的寶物！" />
+    <meta property="og:url" content="http://www.arinatycoon.com/GetHarvestItem1.php" />
+    <meta property="og:image" content="http://www.arinatycoon.com/img/lt00.jpg"/>
+    <meta property="og:type" content="website" />
+    <link rel="shortcut icon" href="https://www.arinamillion.com/arinanew/images/favicon_arina.ico" type="image/x-icon" />
+  	<link rel="Bookmark" href="https://www.arinamillion.com/arinanew/images/favicon_arina.ico" type="image/x-icon" />
+
+    <title> Arina Millionaire </title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/fireworks.css">
+    <link rel="stylesheet" href="css/sadface.css">
+    
+  </head>
+
+  <body>
+      <div class="container-fluid">
+          <ul class="nav justify-content-end">
+            <li class="nav-item" >
+                <a class="nav-link active" style="font-weight: 900; color:white;" href="index.html">HOME</a>
+            </li>  
+            <li class="nav-item" >
+              <a class="nav-link active" style="font-weight: 900; color:white;" href="howToPlay.html">HOW TO PLAY</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" style="font-weight: 900; color:white;" data-toggle="modal" data-target="#information">INFORMATION</a>
+              <!-- Modal -->
+            <div class="modal fade" id="information" tabindex="-1" role="dialog" aria-labelledby="informationTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="informationTitle">INFORMATION</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <center>
+                          玩家地址<br/><span class="show" style="font-size:2vmin"id="address"></span>
+                      </center>                          
+                      <hr/>
+                      <center>
+                          上次兌獎紀錄<br/><span class="show" id="record0"></span> 
+                      </center>                          
+                      <hr/>
+                      <center>
+                          兌獎歷史紀錄(顯示先前5筆,不包含該次)<br/><span class="show" id="record"></span>
+                      </center>                          
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="font-weight: 900; color:white;" href="https://etherscan.io/address/0xcCdA5213d453388fB5fB43054BC261c8636b1e51#code" target="_blank" >SMART CONTRACT</a>
+            </li>
+          </ul>
+            
+            <div id="scratch">
+                <span style="font-size: 8vmin; text-align: center; color:white; font-weight: 900; position: absolute; top: 8%;">三選一</span>  
+                <figure class="snip1104 red" onclick="randLottery()">
+                    <img src="img/scratchOffNotScratched.png"/>
+                    <figcaption>
+                        <h2>選我<span>1</span></h2>
+                    </figcaption>
+                    <a href="#"></a>
+                </figure>
+                <figure class="snip1104 blue" onclick="randLottery()">
+                    <img src="img/scratchOffNotScratched.png"/>
+                    <figcaption>
+                        <h2>選我<span>2</span></h2>
+                    </figcaption>
+                    <a href="#"></a>
+                </figure>
+                <figure class="snip1104 green" onclick="randLottery()">
+                    <img src="img/scratchOffNotScratched.png"/>
+                    <figcaption>
+                        <h2>選我<span>3</span></h2>
+                    </figcaption>
+                </figure>
+
+                    
+                  </div>
+                </div>           
+              </div>
+            
+    </div>
+    <!--刮刮樂中獎-->
+    <div id="imga" style="display: none;">
+      <span id="status" value=""></span>
+      <span id="Arina" value=""></span>
+      <span id="ETH" value=""></span>
+      <span id="GIC" value=""></span>
+      <div id="main">
+        <a href="javascript:window.location.reload()">
+          <img src="img/main.png" style="width: 100%; height: auto;">
+        </a>
+      </div>
+      <div id="share">
+          <a href="javascript: void(window.open('http://www.facebook.com/share.php?u='.concat(encodeURIComponent('http://www.arinatycoon.com'))));">
+            <img src="img/share.png" style="width: 100%; height: auto;">
+          </a>
+      </div>      
+    </div>
+    <!--鞭炮-->
+    <div id="pyro" class="pyro" style="display: none;">
+      <div class="before"></div>
+      <div class="after"></div>
+    </div>
+    <!--交易等待中-->
+    <div id="loadingbg" style="display: none;">
+        <div id='loading'>
+            <h1>交易進行中，請稍後。</h1>
+            <div class="center">
+              <div class="loader"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" id="lottery00" style="display: none;" data-toggle="modal" data-target="#exampleModalCenter"></button>
+      
+    <!-- 刮刮樂 -->
+    <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" data-backdrop="static" data-keyboard="false" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                  <div id="promo" class="scratchpad"></div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" onclick="aa()" class="btn btn-primary" data-dismiss="modal" >領獎</button>
+              </div>
+            </div>
+        </div>
+    </div>
+        
+    <script src="js/web3.js"></script>
+    <script src="js/jquery-3.2.1.slim.min.js"></script>    
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="js/wScratchPad.min.js"></script>
+    <script src="js/abi.js"></script>
+    <script src="js/abi2.js"></script>
+    <script src="js/ethereum.js"></script>
+    <script type="text/javascript" src="js/jquery.i18n.properties.js"></script>
+    <script type="text/javascript" src="js/common_i18n.js"></script>
+    
+    <script>
+        /* Demo purposes only */
+        $("figure").mouseleave(
+            function() {
+                $(this).removeClass("hover");
+            }
+        );
+        $('.rolldown-list li').each(function () {
+            var delay = ($(this).index() / 4) + 's';
+            $(this).css({
+                webkitAnimationDelay: delay,
+                mozAnimationDelay: delay,
+                animationDelay: delay
+            });
+        });
+        function aa(){
+          web3.eth.getAccounts(function(error, result) {
+          userAccount = result[0];
+
+          infoContract.getPastEvents("Play_game",{filter:{from:userAccount},fromBlock:0,toBlock:'latest'})
+          .then(function(events) {
+            let length = events.length;
+            var event_last = events[length-1];
+            var record = event_last.returnValues.record;
+            if(record == 0 || record == 1){
+              //$(".wrapper").show();
+              $("#imga").show();
+              $(".container-fluid").hide();
+              web3.eth.getAccounts(function(error, result) {
+                userAccount = result[0];
+                $("#status").html("再接再厲!!");
+                $("#GIC").html("0");
+                $("#Arina").html("0");
+                infoContract.getPastEvents("Random",{filter:{from:userAccount},fromBlock:0,toBlock:'latest'})
+                  .then(function(lottery_events) {
+                  console.log(lottery_events);
+                      let lottery_length = lottery_events.length;
+                      var lottery_event_last = lottery_events[lottery_length-1];
+                      var random_player = lottery_event_last.returnValues.random_player;
+                      var random_lottery = lottery_event_last.returnValues.random_lottery;
+
+                      if(random_player == random_lottery){
+                          $("#ETH").html(ETH);
+                      }else{
+                          $("#ETH").html("0");
+                      }
+                  });
+              });
+
+            }else if(record == 2){
+
+              $("#pyro").show();
+              $("#imga").show();
+              $("body").css("overflow","hidden");
+              $(".container-fluid").hide();
+              var Arina;
+              var ETH;
+              var GIC;
+              web3.eth.getAccounts(function(error, result) {
+                userAccount = result[0];
+                Promise.all([
+                  ArinaContract.methods.balanceOf(address).call(),
+                  infoContract.methods.total_airdrop_Arina().call(),
+                  infoContract.methods.airdrop_Arina().call(),
+                  infoContract.methods.level_judgment(userAccount).call(),
+                  infoContract.methods.airdrop_GIC().call(),
+                ]).then(([Arina_totBalance, total_airdrop_Arina, airdrop_Arina, _level, airdrop_GIC])=>{
+
+                  var  Arina_totBalance = Arina_totBalance/(10**8)
+                  var  total_airdrop_Arina =  total_airdrop_Arina/(10**8)
+                  var  airdrop_Arina =  airdrop_Arina/(10**8)
+                  GIC =  airdrop_GIC/(10**18)
+
+                  //console.log(Arina_totBalance, total_airdrop_Arina, airdrop_Arina, _level, airdrop_GIC);
+                  var now_airdrop = Arina_judgment(Arina_totBalance, total_airdrop_Arina, airdrop_Arina);
+                  //console.log(now_airdrop);
+                  Arina = Arina_amount_judgment(_level, now_airdrop);
+
+                  ETH = eth_amount_judgment(_level);
+                  $("#status").html("恭喜獲得!!");
+                  $("#GIC").html(GIC);
+                  $("#Arina").html(Arina);
+                });
+                infoContract.getPastEvents("Random",{filter:{from:userAccount},fromBlock:0,toBlock:'latest'})
+                  .then(function(lottery_events) {
+                      let lottery_length = lottery_events.length;
+                      var lottery_event_last = lottery_events[lottery_length-1];
+                      var random_player = lottery_event_last.returnValues.random_player;
+                      var random_lottery = lottery_event_last.returnValues.random_lottery;
+
+                      if(random_player == random_lottery){
+                          $("#ETH").html(ETH);
+                      }else{
+                          $("#ETH").html("0");
+                      }
+                  });
+              });
+
+            }
+          });
+        });
+
+          
+        }
+
+    </script>
+
+    
+  </body>
+</html>

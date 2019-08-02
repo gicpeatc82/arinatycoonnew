@@ -1,0 +1,24 @@
+body {
+  background-color:#F0F0F0;
+  padding: 2em;
+  font-family: 'Raleway','Source Sans Pro', 'Arial';
+}
+button{width:120px;height:40px;font-size:25px;margin: 0px 18px;}
+.big_block{padding-left:30%;}
+.title{padding-left:165px;padding-top:5%;}
+.block1{}
+.block2{}
+.show{
+  padding:0.5em;
+  height:50px;
+  width:480px;
+  background-color:#888888;
+  margin: 1em 0;
+}
+.show2{
+  padding:0.5em;
+  height:180px;
+  width:480px;
+  background-color:#888888;
+  margin: 1em 0;
+}
