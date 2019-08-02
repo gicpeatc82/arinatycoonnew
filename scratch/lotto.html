@@ -34,7 +34,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#"  data-toggle="modal" data-target="#information">INFORMATION</a>
-              <!-- Modal -->
+          <!-- INFORMATION Modal -->
               <div class="modal fade" id="information" tabindex="-1" role="dialog" aria-labelledby="informationTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
@@ -45,16 +45,19 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                      <center>
-                          玩家地址<br/><span class="show" style="font-size:2vmin"id="address"></span>
+                      <center data-i18n-text="address">
+                        <p data-i18n-text="address"></p>
+                          <br/><span class="show" style="font-size:2vmin"id="address"></span>
                       </center>                          
                       <hr/>
                       <center>
-                          上次兌獎紀錄<br/><span class="show" id="record0"></span> 
+                          <p data-i18n-text="lastrecord"></p>
+                          <br/><span class="show" id="record0"></span> 
                       </center>                          
                       <hr/>
                       <center>
-                          兌獎歷史紀錄(顯示先前5筆,不包含該次)<br/><span class="show" id="record"></span>
+                          <p data-i18n-text="record"></p>
+                          <br/><span class="show" id="record"></span>
                       </center>                          
                     </div>
                   </div>
@@ -143,7 +146,21 @@
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-body">
-                  <div id="promo" class="scratchpad"></div>
+                  <div id="promo" class="scratchpad">
+                      <div id="game-one">
+                          <p data-i18n-text="WinARINA"></p>
+                          <p ><span data-i18n-text="scratchARINA"></span> <span><img class="coin-copy coin-copy1" src="img/ARINAicon.png" alt=""></span></p>
+                      </div>
+                      
+                      <div id="game-two">
+                        <p><span data-i18n-text="scratchETH"></span><span><img class="coin-copy" src="img/ETHicon.png" alt=""></span></p>
+                        <p data-i18n-text="noexchange"></p>
+                        <p data-i18n-text="WinETH"></p>
+                      </div>
+                  </div>
+                  <div id="game-text">
+                    
+                  </div>
               </div>
               <div class="modal-footer">
                   <button type="button" onclick="aa()" class="btn btn-primary" data-dismiss="modal" data-i18n-text="ReceivePrize"></button>
@@ -164,6 +181,16 @@
     <script type="text/javascript" src="js/common_i18n.js"></script>
     
     <script>
+      // $(function(){
+      //   $('#promo').wScratchPad({
+      //       size: 60,       
+      //       bg:  'img/scratchOffWholeWinning.png',
+      //       //realtime    : true, 
+      //       fg: 'img/scratch_off.png',
+      //       'cursor': 'url("http://jennamolby.com/scratch-and-win/images/coin1.png") 5 5, default',
+      //     });
+      //   $("#lottery00").click();
+      // })
         /* Demo purposes only */
         $("figure").mouseleave(
             function() {
@@ -193,7 +220,7 @@
               $(".container-fluid").hide();
               web3.eth.getAccounts(function(error, result) {
                 userAccount = result[0];
-                $("#status").html("再接再厲!!");
+                $("#status").html(jQuery.i18n.prop('playagain'));
                 $("#GIC").html("0");
                 $("#Arina").html("0");
                 infoContract.getPastEvents("Random",{filter:{from:userAccount},fromBlock:0,toBlock:'latest'})
