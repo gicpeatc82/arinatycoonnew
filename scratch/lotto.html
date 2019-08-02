@@ -27,15 +27,15 @@
       <div class="container-fluid">
           <ul class="nav justify-content-end">
             <li class="nav-item" >
-                <a class="nav-link active" style="font-weight: 900; color:white;" href="index.html">HOME</a>
+                <a class="nav-link active"href="index.html">HOME</a>
             </li>  
             <li class="nav-item" >
-              <a class="nav-link active" style="font-weight: 900; color:white;" href="howToPlay.html">HOW TO PLAY</a>
+              <a class="nav-link active" href="howToPlay.html">HOW TO PLAY</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" style="font-weight: 900; color:white;" data-toggle="modal" data-target="#information">INFORMATION</a>
+              <a class="nav-link" href="#"  data-toggle="modal" data-target="#information">INFORMATION</a>
               <!-- Modal -->
-            <div class="modal fade" id="information" tabindex="-1" role="dialog" aria-labelledby="informationTitle" aria-hidden="true">
+              <div class="modal fade" id="information" tabindex="-1" role="dialog" aria-labelledby="informationTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -62,30 +62,38 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" style="font-weight: 900; color:white;" href="https://etherscan.io/address/0xcCdA5213d453388fB5fB43054BC261c8636b1e51#code" target="_blank" >SMART CONTRACT</a>
+              <a class="nav-link" href="https://etherscan.io/address/0xcCdA5213d453388fB5fB43054BC261c8636b1e51#code" target="_blank" >SMART CONTRACT</a>
+            </li>
+
+            <li class="nav language">
+                <select id="language" class="selectpicker form-control form-control-sm" data-width="auto" data-style="btn-primary" name="language" onchange="changelang()">
+                    <option value="en">ENG</option>
+                    <option value="zh_TW">TW</option>
+                    <option value="zh_CN">CN</option>
+                </select> 
             </li>
           </ul>
-            
+      <!---------scratch----------------------->
             <div id="scratch">
-                <span style="font-size: 8vmin; text-align: center; color:white; font-weight: 900; position: absolute; top: 8%;">三選一</span>  
+                <span data-i18n-text="chooseOne"></span>  
                 <figure class="snip1104 red" onclick="randLottery()">
                     <img src="img/scratchOffNotScratched.png"/>
                     <figcaption>
-                        <h2>選我<span>1</span></h2>
+                        <h2 data-i18n-text="chooseMe1"></h2>
                     </figcaption>
                     <a href="#"></a>
                 </figure>
                 <figure class="snip1104 blue" onclick="randLottery()">
                     <img src="img/scratchOffNotScratched.png"/>
                     <figcaption>
-                        <h2>選我<span>2</span></h2>
+                        <h2 data-i18n-text="chooseMe2"></h2>
                     </figcaption>
                     <a href="#"></a>
                 </figure>
                 <figure class="snip1104 green" onclick="randLottery()">
                     <img src="img/scratchOffNotScratched.png"/>
                     <figcaption>
-                        <h2>選我<span>3</span></h2>
+                        <h2 data-i18n-text="chooseMe3"></h2>
                     </figcaption>
                 </figure>
 
@@ -120,7 +128,7 @@
     <!--交易等待中-->
     <div id="loadingbg" style="display: none;">
         <div id='loading'>
-            <h1>交易進行中，請稍後。</h1>
+            <h1 data-i18n-text="loading"></h1>
             <div class="center">
               <div class="loader"></div>
             </div>
@@ -138,7 +146,7 @@
                   <div id="promo" class="scratchpad"></div>
               </div>
               <div class="modal-footer">
-                  <button type="button" onclick="aa()" class="btn btn-primary" data-dismiss="modal" >領獎</button>
+                  <button type="button" onclick="aa()" class="btn btn-primary" data-dismiss="modal" data-i18n-text="ReceivePrize"></button>
               </div>
             </div>
         </div>
