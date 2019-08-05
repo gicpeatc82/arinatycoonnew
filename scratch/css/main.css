@@ -21,6 +21,7 @@ body{
     border-radius: 25px;
     margin-top: -5px;
 }
+
 #chooseOne{
     text-align: center;
     width:100%;
@@ -180,6 +181,10 @@ body{
       margin:0 auto;
   }
 
+/********刮刮樂中獎*************/
+  #status{
+      font-size:0.5vmin;
+  }
   
 
   .rolldown-list li {

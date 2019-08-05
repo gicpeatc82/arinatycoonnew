@@ -248,7 +248,7 @@
     transform: translate(-50%, -50%);
     background-image: url("../img/congratulations.png");
 }
-#Arina{
+#winArina{
     position: absolute;
     color: rgb(199, 32, 143);
     top:42%;
@@ -256,7 +256,7 @@
     font-size: 4vmin;
     font-weight: bold;
 }
-#ETH{
+#winETH{
     position: absolute;
     color: #000;
     top:51%;
@@ -264,7 +264,7 @@
     font-size: 4vmin;
     font-weight: bold;
 }
-#GIC{
+#winGIC{
     position: absolute;
     color: rgb(189, 39, 39);
     top:42%;
@@ -286,11 +286,11 @@
 }
 #status{
   position: absolute;
-    top:30%;
+    top:32%;
     left: 35%;
     width:20vw;
     color: white;
-    font-size: 6vmin;
+    font-size: 4vmin;
     font-weight: 900;
 }
 

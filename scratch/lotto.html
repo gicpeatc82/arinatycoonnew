@@ -112,9 +112,9 @@
     <!--刮刮樂中獎-->
     <div id="imga" style="display: none;">
       <span id="status" value=""></span>
-      <span id="Arina" value=""></span>
-      <span id="ETH" value=""></span>
-      <span id="GIC" value=""></span>
+      <span id="winArina" value=""></span>
+      <span id="winETH" value=""></span>
+      <span id="winGIC" value=""></span>
       <div id="main">
         <a href="javascript:window.location.reload()">
           <img src="img/main.png" style="width: 100%; height: auto;">
@@ -184,7 +184,8 @@
     <script type="text/javascript" src="js/common_i18n.js"></script>
     
     <script>
-      // $(function(){
+      $(function(){
+        
       //   $('#promo').wScratchPad({
       //       size: 60,       
       //       bg:  'img/scratchOffWholeWinning.png',
@@ -193,7 +194,7 @@
       //       'cursor': 'url("http://jennamolby.com/scratch-and-win/images/coin1.png") 5 5, default',
       //     });
       //   $("#lottery00").click();
-      // })
+      })
         /* Demo purposes only */
         $("figure").mouseleave(
             function() {
@@ -224,8 +225,8 @@
               web3.eth.getAccounts(function(error, result) {
                 userAccount = result[0];
                 $("#status").html(jQuery.i18n.prop('playagain'));
-                $("#GIC").html("0");
-                $("#Arina").html("0");
+                $("#winGIC").html("0");
+                $("#winArina").html("0");
                 infoContract.getPastEvents("Random",{filter:{from:userAccount},fromBlock:0,toBlock:'latest'})
                   .then(function(lottery_events) {
                   console.log(lottery_events);
@@ -254,7 +255,7 @@
               web3.eth.getAccounts(function(error, result) {
                 userAccount = result[0];
                 Promise.all([
-                  ArinaContract.methods.balanceOf(address).call(),
+                  ArinaContract.methods.balanceOf(userAccount).call(),
                   infoContract.methods.total_airdrop_Arina().call(),
                   infoContract.methods.airdrop_Arina().call(),
                   infoContract.methods.level_judgment(userAccount).call(),
@@ -273,8 +274,8 @@
 
                   ETH = eth_amount_judgment(_level);
                   $("#status").html("恭喜獲得!!");
-                  $("#GIC").html(GIC);
-                  $("#Arina").html(Arina);
+                  $("#winGIC").html(GIC);
+                  $("#winArina").html(Arina);
                 });
                 infoContract.getPastEvents("Random",{filter:{from:userAccount},fromBlock:0,toBlock:'latest'})
                   .then(function(lottery_events) {
@@ -284,9 +285,9 @@
                       var random_lottery = lottery_event_last.returnValues.random_lottery;
 
                       if(random_player == random_lottery){
-                          $("#ETH").html(ETH);
+                          $("#winETH").html(ETH);
                       }else{
-                          $("#ETH").html("0");
+                          $("#winETH").html("0");
                       }
                   });
               });
