@@ -53,27 +53,29 @@ window.addEventListener('load', async () => {
 //const function(判斷輸贏及剪刀石頭布的函數,因區塊練回傳值為0,1,2)
 function win(_result){
 // 0 => 輸   1 => 平手   2 => 贏
+var gameLose = jQuery.i18n.prop('gameLose');
+var gameWin = jQuery.i18n.prop('gameWin');
 if (_result == 0 || _result == 1){
-        return "槓龜!!!";
+        return gameLose;
     }else if (_result == 2){
-        return "中獎!!!";
+        return gameWin;
     }else {
         return "error";
     }
 }
 
-function mora(_orig){
-  // 0 => 布   1 => 剪刀   2 => 石頭
-      if (_orig == 0){
-        return "布";
-      }else if (_orig == 1){
-        return "剪刀";
-      }else if (_orig == 2){
-        return "石頭";
-      }else {
-        return "error";
-      }
-}
+// function mora(_orig){
+//   // 0 => 布   1 => 剪刀   2 => 石頭
+//       if (_orig == 0){
+//         return "布";
+//       }else if (_orig == 1){
+//         return "剪刀";
+//       }else if (_orig == 2){
+//         return "石頭";
+//       }else {
+//         return "error";
+//       }
+// }
 
 function Arina_judgment(Arina_totBalance, total_airdrop_Arina , airdrop_Arina){
   if (Arina_totBalance >= total_airdrop_Arina/2){
@@ -278,15 +280,15 @@ function show(){
 web3.eth.getAccounts(function(error, result) {
     userAccount = result[0];
     if(userAccount != old_address){
-      console.log("地址更新");
+      console.log("New address");
     }
     if (userAccount == undefined){
-      $("#address").html("未載入地址");
+      $("#address").html("Address not fonund");
     }
     else{
-      $("#address").html(userAccount);
+      $("#playeraddress").html(userAccount);
+      console.log(userAccount);
     }
-
 //顯示猜拳紀錄
 infoContract.getPastEvents("Play_game",{filter:{from:userAccount},fromBlock:0,toBlock:'latest'})
 .then(function(events) {
@@ -295,13 +297,13 @@ infoContract.getPastEvents("Play_game",{filter:{from:userAccount},fromBlock:0,to
 
     if (userAccount == undefined){
 
-      $("#record0").html("未載入地址");
-      $("#record").html("未載入地址");
+      $("#record0").html("Address not fonund");
+      $("#record").html("Address not fonund");
 
     }else if (length == 0){
 
-      $("#record0").html("未有紀錄");
-      $("#record").html("未有紀錄");
+      $("#record0").html("No Record");
+      $("#record").html("No Record");
 
     }else{
 
@@ -312,7 +314,7 @@ infoContract.getPastEvents("Play_game",{filter:{from:userAccount},fromBlock:0,to
       $("#record0").html(win(record)+"<br>");
 
       if (length < 2){
-        $("#record").html("未有紀錄");
+        $("#record").html("No Record");
       }else{
         var event_last = events[length-2]
         var record = event_last.returnValues.record;
@@ -341,13 +343,13 @@ infoContract.getPastEvents("Random",{filter:{from:userAccount},fromBlock:0,toBlo
     let length = events.length;
 
     if (userAccount == undefined){
-      $("#lottery0").html("未載入地址");
-      $("#lottery").html("未載入地址");
+      $("#lottery0").html("Address not fonund");
+      $("#lottery").html("Address not fonund");
     }
 
     else if (length == 0){
-      $("#lottery0").html("未有開獎紀錄");
-      $("#lottery").html("未有開獎紀錄");
+      $("#lottery0").html("No Record");
+      $("#lottery").html("No Record");
 
     }
     else{
