@@ -16,22 +16,103 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <style>
         body  {           
-            background-image: url("img/lotto.gif");
+            background-image: url("img/lotto.png");
             background-repeat: no-repeat;
             background-size: 100% 100vh;
         }
-        
+        .nav{
+          float:right;
+          width:8%;
+          margin:10px;
+        }
+        #language{
+            font-weight: 800; 
+            color: #fff;
+            background-color: #444;
+            border: 0;
+            border-radius: 25px;
+        }
+        .fontstyle{
+          position:absolute;
+          font-family: 'Montserrat', sans-serif,'Microsoft JhengHei';
+          text-shadow:
+              -1px -1px 0 #000,
+              1px -1px 0 #000,
+              -1px 1px 0 #000,
+              1px 1px 0 #000,
+              2px 2px 2px #000;
+          color:#fff;
+          font-weight:600;
+        }
+        .content{
+          top:32%;
+          right:1%;
+          width:18%;
+          font-size: 2vmin;
+          line-height: 15px;
+        }
+        .content div{
+          margin:10px 0;
+        }
+        .fontstyle p{
+          margin:0;
+          padding:0;
+        }
+
+        .GetARINAwill{
+          bottom:1%;
+          right:1%;
+          width:18%;
+          font-size: 1vmin;
+        }
     </style>
   </head>
 
   <body>
-      <div style="position: absolute; right:5%; width:18vw;">
-          <a href='lotto.html'>      
-          <img src="img/freeCollection.gif" style="width: 100%; height: auto;" >
-          </a>
+    <div style="position: absolute; right:5%; width:18vw;">
+        <a href='lotto.html'>      
+        <img src="img/freeCollection.gif" style="width: 100%; height: auto;" >
+        </a>
+    </div>
+
+    <div class="nav language">
+        <select id="language" class="selectpicker form-control form-control-sm" data-width="auto" data-style="btn-primary" name="language" onchange="changelang()">
+            <option value="en">ENG</option>
+            <option value="zh_TW">TW</option>
+            <option value="zh_CN">CN</option>
+        </select> 
+    </div>
+
+    <div class="content fontstyle">
+      <div id="HowWin">
+        <p data-i18n-text="HowWin"></p>
+        <p data-i18n-text="MillionARINA"></p>
+        <p data-i18n-text="Maximum"></p>
       </div>
-        
+      <div id="HowPlay">
+        <p data-i18n-text="HowPlay"></p>
+        <p data-i18n-text="Game1"></p>
+        <p data-i18n-text="Game1_1"></p>
+        <p data-i18n-text="Game1_2"></p>
+      </div>
+
+      <div id="Game2">
+        <p data-i18n-text="Game2"></p>
+        <p data-i18n-text="Game2_1"></p>
+        <p data-i18n-text="Game2_2"></p>
+      </div>
+      
+    </div>
+
+    <div class="GetARINAwill fontstyle">
+      <p data-i18n-text="GetARINAwill"></p>
+      <p data-i18n-text="finalexplanations"></p>
+    </div>
+
     <script src="js/jquery-3.2.1.slim.min.js"></script>    
     <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js" ></script>
+    <script type="text/javascript" src="js/jquery.i18n.properties.js"></script>
+    <script type="text/javascript" src="js/common_i18n.js"></script>
   </body>
 </html>
